@@ -19,6 +19,18 @@
 
 BEGIN_MESSAGE_MAP(CMiniDrawApp, CWinAppEx)
 	ON_COMMAND(ID_APP_ABOUT, &CMiniDrawApp::OnAppAbout)
+  ON_COMMAND(ID_TOOLS_LINE, OnToolsLine)
+	ON_UPDATE_COMMAND_UI(ID_TOOLS_LINE, OnUpdateToolsLine)
+	ON_COMMAND(ID_TOOLS_RECTANGLE, OnToolsRectangle)
+	ON_UPDATE_COMMAND_UI(ID_TOOLS_RECTANGLE, OnUpdateToolsRectangle)
+	ON_COMMAND(ID_TOOLS_CIRCLE, OnToolsCircle)
+	ON_UPDATE_COMMAND_UI(ID_TOOLS_CIRCLE, OnUpdateToolsCircle)
+	ON_COMMAND(ID_TOOLS_CIRCLE_FILLED, OnToolsCircleFilled)
+	ON_UPDATE_COMMAND_UI(ID_TOOLS_CIRCLE_FILLED, OnUpdateToolsCircleFilled)
+  ON_COMMAND(ID_LINE_SINGLE, OnLineSingle)
+	ON_UPDATE_COMMAND_UI(ID_LINE_SINGLE, OnUpdateLineSingle)
+	ON_COMMAND(ID_LINE_DOUBLE, OnLineDouble)
+	ON_UPDATE_COMMAND_UI(ID_LINE_DOUBLE, OnUpdateLineDouble)
 	// Standard file based document commands
 	ON_COMMAND(ID_FILE_NEW, &CWinAppEx::OnFileNew)
 	ON_COMMAND(ID_FILE_OPEN, &CWinAppEx::OnFileOpen)
@@ -160,6 +172,67 @@ void CMiniDrawApp::LoadCustomState()
 void CMiniDrawApp::SaveCustomState()
 {
 }
+
+void CMiniDrawApp::OnLineDouble() 
+{
+	m_CurrentThickness = 2;
+}
+
+void CMiniDrawApp::OnUpdateLineDouble(CCmdUI* pCmdUI) 
+{
+	pCmdUI->SetCheck(m_CurrentThickness == 2 ? 1: 0);
+}
+
+void CMiniDrawApp::OnLineSingle() 
+{
+	m_CurrentThickness = 1;
+}
+
+void CMiniDrawApp::OnUpdateLineSingle(CCmdUI* pCmdUI) 
+{
+	pCmdUI->SetCheck(m_CurrentThickness == 1 ? 1: 0);
+}
+
+void CMiniDrawApp::OnToolsCircle() 
+{
+	m_CurrentTool = ID_TOOLS_CIRCLE;
+}
+
+void CMiniDrawApp::OnUpdateToolsCircle(CCmdUI* pCmdUI) 
+{
+	pCmdUI->SetCheck(m_CurrentTool == ID_TOOLS_CIRCLE ? 1: 0);	
+}
+
+void CMiniDrawApp::OnToolsCircleFilled() 
+{
+	m_CurrentTool = ID_TOOLS_CIRCLE_FILLED;
+}
+
+void CMiniDrawApp::OnUpdateToolsCircleFilled(CCmdUI* pCmdUI) 
+{
+	pCmdUI->SetCheck(m_CurrentTool == ID_TOOLS_CIRCLE_FILLED ? 1: 0);	
+}
+
+void CMiniDrawApp::OnToolsLine() 
+{
+	m_CurrentTool = ID_TOOLS_LINE;
+}
+
+void CMiniDrawApp::OnUpdateToolsLine(CCmdUI* pCmdUI) 
+{
+	pCmdUI->SetCheck(m_CurrentTool==ID_TOOLS_LINE ? 1: 0);	
+}
+
+void CMiniDrawApp::OnToolsRectangle() 
+{
+	m_CurrentTool = ID_TOOLS_RECTANGLE;
+}
+
+void CMiniDrawApp::OnUpdateToolsRectangle(CCmdUI* pCmdUI) 
+{
+	pCmdUI->SetCheck(m_CurrentTool ==ID_TOOLS_RECTANGLE ? 1: 0);
+}
+
 
 // CMiniDrawApp message handlers
 

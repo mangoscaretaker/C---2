@@ -9,6 +9,14 @@
 class CMiniDrawView : public CView
 {
 protected: // create from serialization only
+  CString m_ClassName;
+	bool m_Dragging;		//wordt er verplaatst?
+	HCURSOR m_HArrow;		//vorm van de cursor
+	HCURSOR m_HCross;		//vorm van de cursor
+	CPen m_PenDotted;		//vorm van de lijn
+	CPoint m_PointOld;	//plaats van figuur
+	CPoint m_PointOrigin;	//plaats van figuur
+
 	CMiniDrawView();
 	DECLARE_DYNCREATE(CMiniDrawView)
 
@@ -44,6 +52,10 @@ protected:
 	afx_msg void OnRButtonUp(UINT nFlags, CPoint point);
 	afx_msg void OnContextMenu(CWnd* pWnd, CPoint point);
 	DECLARE_MESSAGE_MAP()
+public:
+  afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
+  afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
+  afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 };
 
 #ifndef _DEBUG  // debug version in MiniDrawView.cpp

@@ -36,6 +36,18 @@ public:
 	virtual void SaveCustomState();
 
 	afx_msg void OnAppAbout();
+  afx_msg void OnToolsLine();
+	afx_msg void OnUpdateToolsLine(CCmdUI* pCmdUI);
+	afx_msg void OnToolsRectangle();
+	afx_msg void OnUpdateToolsRectangle(CCmdUI* pCmdUI);
+	afx_msg void OnToolsCircle();
+	afx_msg void OnUpdateToolsCircle(CCmdUI* pCmdUI);
+	afx_msg void OnToolsCircleFilled();
+	afx_msg void OnUpdateToolsCircleFilled(CCmdUI* pCmdUI);
+	afx_msg void OnLineSingle();
+	afx_msg void OnUpdateLineSingle(CCmdUI* pCmdUI);
+	afx_msg void OnLineDouble();
+	afx_msg void OnUpdateLineDouble(CCmdUI* pCmdUI);
 	DECLARE_MESSAGE_MAP()
 };
 
