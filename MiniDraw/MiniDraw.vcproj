@@ -282,6 +282,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\res\toolbar1.bmp"
+				>
+			</File>
+			<File
 				RelativePath=".\res\Toolbar256.bmp"
 				>
 			</File>
