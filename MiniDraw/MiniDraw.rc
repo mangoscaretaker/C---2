@@ -133,6 +133,18 @@ BEGIN
     BEGIN
         MENUITEM "&About MiniDraw...",          ID_APP_ABOUT
     END
+    POPUP "&Tools"
+    BEGIN
+        MENUITEM "&Line",                       ID_TOOLS_LINE
+        MENUITEM "&Rectangle",                  ID_TOOLS_RECTANGLE
+        MENUITEM "&Circle",                     ID_TOOLS_CIRCLE
+        MENUITEM "&Filled Circle",              ID_TOOLS_CIRCLE_FILLED
+    END
+    POPUP "&Lines"
+    BEGIN
+        MENUITEM "&Single",                     ID_LINE_SINGLE
+        MENUITEM "&Double",                     ID_LINE_DOUBLE
+    END
 END
 
 IDR_POPUP_EDIT MENU 
@@ -385,6 +397,19 @@ BEGIN
     IDS_EDIT_MENU           "Edit"
 END
 
+STRINGTABLE 
+BEGIN
+    ID_TOOLS_LINE           "Select tool to draw lines\nLine"
+    ID_TOOLS_RECTANGLE      "Select tool to draw a rectangle\nRectangle"
+    ID_TOOLS_CIRCLE         "Select tool to draw a circle\nCircle"
+    ID_TOOLS_CIRCLE_FILLED  "Select tool to draw a filled circle\nCircle"
+    ID_LINE_SINGLE          "Draw a single line\nSingle"
+    ID_LINE_DOUBLE          "Draw a double line\nDouble"
+    ID_TOOLS_RECTANGLE32779 "Select tool to draw a rectangle\nRectangle"
+    ID_TOOLS_CIRCLE32780    "Select tool to draw"
+    ID_TOOLS_FILLEDCIRCLE   "Select tool to draw a filled circle\nCircle"
+END
+
 #endif    // English (U.S.) resources
 /////////////////////////////////////////////////////////////////////////////
 
@@ -397,6 +422,30 @@ END
 LANGUAGE LANG_DUTCH, SUBLANG_DUTCH
 #pragma code_page(1252)
 #endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP                  "res\\toolbar1.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR  16, 15
+BEGIN
+    BUTTON      ID_TOOLS_LINE
+    BUTTON      ID_TOOLS_RECTANGLE
+    BUTTON      ID_TOOLS_CIRCLE
+    BUTTON      ID_TOOLS_CIRCLE_FILLED
+    SEPARATOR
+    BUTTON      ID_LINE_SINGLE
+    BUTTON      ID_LINE_DOUBLE
+END
+
 
 #ifdef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
@@ -438,30 +487,6 @@ BEGIN
 END
 
 #endif    // APSTUDIO_INVOKED
-
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// Bitmap
-//
-
-IDR_TOOLBAR1            BITMAP                  "res\\toolbar1.bmp"
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// Toolbar
-//
-
-IDR_TOOLBAR1 TOOLBAR  16, 15
-BEGIN
-    BUTTON      ID_TOOLS_LINE
-    BUTTON      ID_TOOLS_RECTANGLE
-    BUTTON      ID_TOOLS_CIRCLE
-    BUTTON      ID_TOOLS_CIRCLE_FILLED
-    SEPARATOR
-    BUTTON      ID_LINE_SINGLE
-    BUTTON      ID_LINE_DOUBLE
-END
 
 #endif    // Dutch (Netherlands) resources
 /////////////////////////////////////////////////////////////////////////////

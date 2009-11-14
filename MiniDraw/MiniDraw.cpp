@@ -31,7 +31,9 @@ END_MESSAGE_MAP()
 
 CMiniDrawApp::CMiniDrawApp()
 {
-
+  m_CurrentThickness = 1;
+  m_CurrentTool = ID_TOOLS_LINE;
+  m_CurrentColor = RGB(0,0,0);
 	m_bHiColorIcons = TRUE;
 
 	// TODO: add construction code here,

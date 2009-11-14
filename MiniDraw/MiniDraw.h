@@ -17,6 +17,9 @@
 class CMiniDrawApp : public CWinAppEx
 {
 public:
+  int m_CurrentThickness;
+  UINT m_CurrentTool;
+  COLORREF m_CurrentColor;
 	CMiniDrawApp();
 
 
