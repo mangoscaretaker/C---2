@@ -52,7 +52,7 @@ BOOL CMiniDrawView::PreCreateWindow(CREATESTRUCT& cs)
 
 // CMiniDrawView drawing
 
-void CMiniDrawView::OnDraw(CDC* /*pDC*/)
+void CMiniDrawView::OnDraw(CDC* pDC)
 {
 	CMiniDrawDoc* pDoc = GetDocument();
 	ASSERT_VALID(pDoc);
