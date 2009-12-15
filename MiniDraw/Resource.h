@@ -27,6 +27,9 @@
 #define ID_VIEW_APPLOOK_OFF_2007_AQUA   218
 #define IDS_EDIT_MENU                   306
 #define IDR_TOOLBAR1                    310
+#define IDD_DIALOG1                     312
+#define IDD_DIALOG_NAME                 312
+#define IDC_EDIT1                       1000
 #define ID_TOOLS_LINE                   32771
 #define ID_TOOLS_RECTANGLE              32773
 #define ID_TOOLS_CIRCLE                 32774
@@ -40,14 +43,17 @@
 #define ID_TOOLS_FILLEDCIRCLE           32781
 #define ID_LINES_SINGLE                 32782
 #define ID_LINES_DOUBLE                 32783
+#define ID_BUTTON32784                  32784
+#define ID_BUTTON32785                  32785
+#define ID_BUTTON32786                  32786
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        312
-#define _APS_NEXT_COMMAND_VALUE         32784
-#define _APS_NEXT_CONTROL_VALUE         1000
+#define _APS_NEXT_RESOURCE_VALUE        314
+#define _APS_NEXT_COMMAND_VALUE         32787
+#define _APS_NEXT_CONTROL_VALUE         1001
 #define _APS_NEXT_SYMED_VALUE           310
 #endif
 #endif

@@ -80,12 +80,14 @@ void CMiniDrawDoc::AddFigure(CFigure* pFigure) {
 }
 
 CFigure *CMiniDrawDoc::GetFigure(int index) {
-   vector<CFigure*>::iterator p = m_FigArray.begin();
-	
-   if(index < 0 || index > m_FigArray.size())
-	   return NULL;
-   return *(p+index);
+  vector<CFigure*>::iterator p = m_FigArray.begin();
+	if(index < 0 || index > m_FigArray.size())
+    return NULL;
+  
+  return *(p+index);
 }
+
+
 
 int CMiniDrawDoc::GetNumFigs() {
    return m_FigArray.size();
@@ -95,9 +97,36 @@ int CMiniDrawDoc::GetNumFigs() {
 
 // CMiniDrawDoc commands
 
+void CFigure::Serialize(CArchive & ar) {
+	if (ar.IsStoring()) 
+	  ar << m_X1 << m_Y1 << m_X2 << m_Y2  << m_Color << m_Thickness;
+  else
+	  ar >> m_X1 >> m_Y1 >> m_X2 >> m_Y2 >> m_Color >> m_Thickness;
+}
+
+void CLine::Serialize(CArchive & ar) {
+	CFigure::Serialize(ar);
+}
+
+void CCircle::Serialize(CArchive & ar) {
+	CFigure::Serialize(ar);
+	if (ar.IsStoring()) 
+	  ar << m_Filled;
+	else
+	{
+	  ar >> m_Filled;
+  }
+}
+
+void CRectangle::Serialize(CArchive & ar) {
+	CFigure::Serialize(ar);
+}
+
 CRect CFigure::GetDimRect() {
   return CRect(min(m_X1,m_X2),min(m_Y1,m_Y2),max(m_X1,m_X2)+1,max(m_Y1,m_Y2)+1);
 }
+
+
 
 CLine::CLine(int X1, int Y1, int X2, int Y2, COLORREF Color, int Thickness) {
   m_X1 = X1;
@@ -121,7 +150,7 @@ void CLine::Draw(CDC * PDC) {
    ::DeleteObject(pen);
 }
 
-CRectangle::CRectangle(int X1, int Y1, int X2, int Y2, COLORREF Color, int Thickness) {
+CRectangle::CRectangle(int X1, int Y1, int X2, int Y2, COLORREF Color, int Thickness, CString name) {
 // zelf maken
   m_X1 = X1;
   m_Y1 = Y1;
@@ -129,6 +158,7 @@ CRectangle::CRectangle(int X1, int Y1, int X2, int Y2, COLORREF Color, int Thick
   m_Y2 = Y2;
   m_Color = Color;
   m_Thickness = Thickness;
+  m_name = name;
 }
 
 void CRectangle::Draw(CDC *PDC) {
@@ -141,7 +171,11 @@ void CRectangle::Draw(CDC *PDC) {
    PDC->Rectangle(m_X1,m_Y1,m_X2,m_Y2);
    //verwijder pen/brush:
    PDC->SelectObject(pOldPen);
+   
+   PDC->TextOutW(m_X1, m_Y2, m_name, m_name.GetLength());
+   
    ::DeleteObject(pen);
+
 }
 
 CCircle::CCircle(int X1, int Y1, int X2, int Y2, COLORREF Color, int Thickness, bool Filled) {

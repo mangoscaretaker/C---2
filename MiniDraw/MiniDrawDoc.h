@@ -8,37 +8,36 @@ using namespace std;
 
 class CFigure {
   protected:
-      int m_X1; int m_Y1; int m_X2; int m_Y2;
-    	int m_Thickness;
-      COLORREF m_Color;
-virtual void CopyAll( const CFigure& cFigure )	{}
-	virtual void RemoveAll() {}
-
+    int m_X1; int m_Y1; int m_X2; int m_Y2;
+    int m_Thickness;
+    COLORREF m_Color;
+    virtual void CopyAll( const CFigure& cFigure )	{}
+	  virtual void RemoveAll() {}
   public:
-      CFigure() {};
-	CFigure( const CFigure& cFigure )
-{
-		CopyAll( cFigure );
-	}
-
-	CFigure& operator = ( const CFigure& cFigure )	
-{
-		if ( this != &cFigure )	{
-			RemoveAll();
-			CopyAll( cFigure );
-		}
-		return *this;
-	}
-
+    CFigure() {};
+	  CFigure( const CFigure& cFigure ) {
+		  CopyAll( cFigure );
+	  }
+	  CFigure& operator = ( const CFigure& cFigure )	{
+		  if ( this != &cFigure )	{
+			  RemoveAll();
+			  CopyAll( cFigure );
+		  }
+		  return *this;
+	  }
     CRect GetDimRect();
     virtual void Draw(CDC *PDC) = 0;
+    virtual void Serialize(CArchive & ar);
 };
+
 class CRectangle :public CFigure {
   protected:
+    CString m_name;
     CRectangle() {}
   public:
-    CRectangle(int X1, int Y1, int X2, int Y2, COLORREF Color, int Thickness);
+    CRectangle(int X1, int Y1, int X2, int Y2, COLORREF Color, int Thickness, CString name);
     virtual void Draw(CDC *PDC);
+    virtual void Serialize(CArchive &ar);
 };
 
 class CCircle :public CFigure {
@@ -48,6 +47,7 @@ class CCircle :public CFigure {
   public:
     CCircle(int X1, int Y1, int X2, int Y2, COLORREF Color, int Thickness, bool Filled);
     void Draw(CDC *PDC);
+    virtual void Serialize(CArchive &ar);
 };
 
 class CLine :public CFigure {
@@ -56,11 +56,11 @@ class CLine :public CFigure {
   public:
     CLine (int X1, int Y1, int X2, int Y2, COLORREF Color, int Thickness);
     virtual void Draw(CDC * PDC);
+    virtual void Serialize(CArchive &ar);
 };
 
 
-class CMiniDrawDoc : public CDocument
-{
+class CMiniDrawDoc : public CDocument {
 protected: // create from serialization only
 	CMiniDrawDoc();
 	DECLARE_DYNCREATE(CMiniDrawDoc)
