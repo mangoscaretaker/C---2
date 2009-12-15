@@ -276,7 +276,7 @@ END
 
 STRINGTABLE 
 BEGIN
-    IDR_MAINFRAME           "MiniDraw\n\nMiniDraw\n\n\nMiniDraw.Document\nMiniDraw.Document"
+    IDR_MAINFRAME           "MiniDraw\n\nMiniDraw\n\n\nMiniDraw Files (*.drw)\n.drw\nMinidraw.Document\nMiniDr Document"
 END
 
 STRINGTABLE 
